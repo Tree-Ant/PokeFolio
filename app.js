@@ -129,7 +129,7 @@ LogReset = () => {
 
 Deleter = (element) => {
     var EID = element.parentElement.getAttribute('id');
-    db.collection('PCI').doc(EID).delete();
+    db.collection(AccountName).doc(EID).delete();
     document.getElementById(EID).style.display = 'none';
 }
 
