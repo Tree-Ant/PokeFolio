@@ -264,7 +264,7 @@ body::-webkit-scrollbar {
 }
 
 #ModalScreen {
-    height: 900px;
+    height: 90vh;
     z-index: 2000;
     border-radius: 27px;
     position: fixed;
