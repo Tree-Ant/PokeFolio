@@ -10,7 +10,8 @@ var INPUTtoggler = 2;
 var MODALtoggler = 2;
 var HOVERtoggler = 1;
 
-var AccountName = []
+var AccountName = [];
+var AccountRealName = [];
 
 inputToggle = () => {    
     if(INPUTtoggler === 1) {
@@ -142,13 +143,15 @@ CardView = (element) => {
 
 // CreatePokemonLog();
 
-        
+const PokeFolioText = document.querySelector('#PokeFolioText');
+
 DefaultView = () => {
     w1 = "PokeNumber" 
     w2 = ">"
     w3 = 152
     o1 = "PokeNumber"
     CreatePokemonLog(w1, w2, w3, o1);
+    PokeFolioText.innerHTML = AccountRealName + "'s PokeFolio"
 }
 
 CardTypeSelectorEL = document.querySelector('#CardTypeSelector');
@@ -187,6 +190,7 @@ SearchByCardType = () => {
 const LogInform = document.querySelector('#LogInForm');
 const LogInContainer = document.querySelector('#LogInContainer');
 
+
 var LogInAttemptUSER = [];
 var LogInAttemptPW = [];
 var Authenticator = [];
@@ -195,13 +199,14 @@ AuthenticateUSER = () => {
     db.collection("Accounts").where("UserName", '==' , LogInAttemptUSER).where("Password", '==' , LogInAttemptPW).get().then((snapshot) => {
         snapshot.docs.forEach((doc,i) => {   
             Authenticator++;
-            AccountName = doc.data().CollectionName;            
+            AccountName = doc.data().CollectionName;
+            AccountRealName = doc.data().Name;            
         })
     })
     setTimeout(() => {        
         if (Authenticator == 1) {
             console.log('It worked')
-            LogInContainer.style.display = "none";
+            LogInContainer.style.display = "none";            
             DefaultView();
         } else {
             console.log('It didnt work')
