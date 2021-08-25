@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>PokeFolio</title>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -15,9 +15,11 @@
 </head>
 
 <body>
+  <div class="NavBar">
   <div class="TotalSection">
     <div class="PokeFolio" onclick="hoverToggle();">
       <h1 id="PokeFolioText">PokeFolio</h1>
+      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
     </div>
     <div class="PokeBall">
       <img id="SwitchModeButton" src="./assets/imgs/Pokeball.png" alt="" onclick="inputToggle();"
@@ -30,30 +32,61 @@
         <th>Value</th>
         <td id="CardPrice" value="52.00">$ 0.00</td>
       </tr>
-    </table>
+    </table>    
   </div>
+
+  <div id="FilterBar">
+    <select id="CardTypeSelector" name="CardType" placeholder="Type" onchange="CardTypeListener();">
+      <option value="None" aria-placeholder="Sort by Type">(Default)</option>
+      <option value="Fire">Fire</option>
+      <option value="Water">Water</option>
+      <option value="Psychic">Psychic</option>
+      <option value="Grass">Grass</option>
+      <option value="Lightning">Lightning</option>
+      <option value="Dark">Dark</option>
+      <option value="Metal">Metal</option>
+      <option value="Fighting">Fighting</option>
+      <option value="Basic">Basic</option>
+      <option value="Dragon">Dragon</option>
+      <option value="Fairy">Fairy</option>
+      <option value="Supporter">Supporter</option>
+      <option value="Item">Item</option>
+      <option value="Stadium">Stadium</option>
+    </select> 
+    <select id="GenSelector" name="CardType" placeholder="Type" onchange="GenListener();">
+      <option value="None" aria-placeholder="Sort by Type">(Default)</option>
+      <option value="Gen1">Gen1</option>
+      <option value="Gen2">Gen2</option>
+      <option value="Gen3">Gen3</option>
+      <option value="Gen4">Gen4</option>
+      <option value="Gen5">Gen5</option>
+      <option value="Gen6">Gen6</option>
+      <option value="Gen7">Gen7</option>
+      <option value="Gen8">Gen8</option>
+    </select>
+    <select id="PriceSelector" name="CardType" placeholder="Type" onchange="CardTypeListener();">
+      <option value="None" aria-placeholder="Sort by Type">(Default)</option>
+      <option value="Fire">Fire</option>
+      <option value="Water">Water</option>
+      <option value="Psychic">Psychic</option>
+      <option value="Grass">Grass</option>
+      <option value="Lightning">Lightning</option>
+      <option value="Dark">Dark</option>
+      <option value="Metal">Metal</option>
+      <option value="Fighting">Fighting</option>
+      <option value="Basic">Basic</option>
+      <option value="Dragon">Dragon</option>
+      <option value="Fairy">Fairy</option>
+      <option value="Supporter">Supporter</option>
+      <option value="Item">Item</option>
+      <option value="Stadium">Stadium</option>
+    </select> 
+  </div>
+</div>
 
   <div id="ModalContainer" onclick="modalToggle()">
     <img id="ModalScreen" src="" alt="" />
-  </div>
-
-  <select id="CardTypeSelector" name="CardType" placeholder="Type" onchange="CardTypeListener();">
-    <option value="None" aria-placeholder="Sort by Type">(Default)</option>
-    <option value="Fire">Fire</option>
-    <option value="Water">Water</option>
-    <option value="Psychic">Psychic</option>
-    <option value="Grass">Grass</option>
-    <option value="Lightning">Lightning</option>
-    <option value="Dark">Dark</option>
-    <option value="Metal">Metal</option>
-    <option value="Fighting">Fighting</option>
-    <option value="Basic">Basic</option>
-    <option value="Dragon">Dragon</option>
-    <option value="Fairy">Fairy</option>
-    <option value="Supporter">Supporter</option>
-    <option value="Item">Item</option>
-    <option value="Stadium">Stadium</option>
-  </select>
+  </div>  
 
   <div class="FORMcontainer">
     <!-- <img id="CardLookupIcon" src="./assets/imgs/Search.svg" alt=""> -->
@@ -102,13 +135,19 @@
   </div>
 
   <div class="BOXcontainer no-hover"></div>
-  <div id="LogInContainer">
+
+  <div id="LogInContainer">    
     <form id="LogInForm">
+      <div>Log In</div>
+      <br>
+      <img class="LogInImage" src="./assets/imgs/Pokeball.png "alt="" />
+      <div id="formINFO">
         <label for="fUserName">UserName</label>
         <input type="text" id="fUserName" name="UserName" />
         <label for="fPassword">Password</label>
         <input type="text" id="fPassword" name="Password" />
         <button>Log In</button>
+      </div>      
     </form>
   </div>
 
